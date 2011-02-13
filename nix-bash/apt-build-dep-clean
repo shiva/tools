@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+   echo "Invalid input: \nSyntax: $0 <pkg1> <pkg2> ..." 
+fi
+
+for thing in "$@"
+do
+    echo "cleaning build-dep for ${thing}. "
+    apt-get remove $(apt-get --simulate build-dep ${thing} | grep "^Inst" | awk '{print $2}')
+
+done
+
