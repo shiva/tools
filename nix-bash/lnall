@@ -36,15 +36,14 @@ if [ "${DIR}" == "${CWD}" -o "${DIR}" == "." ]; then
     exit 0
 fi
 
-exit 0
 FILELIST=`ls $DIR`
 for FILE in $FILELIST
 do
-    if [ -f $FILE]; then
-        #`ln -s $DIR/$FILE $FILE`
-        echo "ln -s $DIR/$FILE $FILE"
+    if [ -f "${DIR}/${FILE}" -o -L "${DIR}/${FILE}" ]; then
+        #echo "ln -s ${DIR}/${FILE} ${FILE}"
+        `ln -s "${DIR}/${FILE}" "${FILE}"`
     else
-        echo "Skipping $FILE.  Not a regular file."
+        echo "Skipping $FILE.  Not a regular file or a sym link."
     fi
 done
 
