@@ -1,0 +1,51 @@
+#!/bin/bash 
+
+# link all files in specified dir to current dir
+
+function print_syntax() {
+    echo "lnall <source-dir>  -  symlinks all files in source-dir to current dir."
+}
+
+if [ ${#*} -ne 1 ]; then
+    echo "Invalid Input: Only 1 argument expected"
+    print_syntax
+    exit 1
+else
+    DIR="$1"
+fi
+
+if [ ! -d "$DIR" ]; then
+    echo "Invalid Input: $DIR is not a directory."
+    print_syntax
+fi
+
+CWD=`pwd`
+if [ "${DIR}" == "${CWD}" -o "${DIR}" == "." ]; then
+    echo "Linking everything in . to . will blow up the universe!"
+    echo -n "Okay then! Linking will commence in ...  "
+
+    let i=3
+    while [ ${i} -ge 0 ]
+    do
+        printf "\b${i}"
+        let i-=1
+        sleep 1
+    done
+    echo ""
+    echo "Just kidding! Have a nice day!"
+    exit 0
+fi
+
+exit 0
+FILELIST=`ls $DIR`
+for FILE in $FILELIST
+do
+    if [ -f $FILE]; then
+        #`ln -s $DIR/$FILE $FILE`
+        echo "ln -s $DIR/$FILE $FILE"
+    else
+        echo "Skipping $FILE.  Not a regular file."
+    fi
+done
+
+exit 0
