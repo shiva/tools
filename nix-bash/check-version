@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 export LC_ALL=C
 # Simple script to list version numbers of critical development tools
 bash --version | head -n1 | cut -d" " -f2-4
