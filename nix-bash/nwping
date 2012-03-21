@@ -1,0 +1,12 @@
+#!/bin/sh 
+
+# new = 192.168.0
+nw=$1
+
+for hid in $(seq 1 254);
+do
+    ip="$nw.$hid"
+    echo "Pinging $ip ... "
+    ping -c 1 -t 1 $ip > /dev/null; 
+    [ $? -eq 0 ] && echo "$ip UP" || : ; 
+done
