@@ -1,5 +1,5 @@
 # prompt should be colorless, odourless, and useful
-PS1='[\w]\n$ '
+PS1='$ '
 
 # env vars
 export WORKON_HOME=~/Envs
