@@ -3,3 +3,4 @@ PS1='[\w]\n$ '
 
 # env vars
 export WORKON_HOME=~/Envs
+export EDITOR=vim
