@@ -35,6 +35,6 @@ nmap <silent> ,sv :so $MYVIMRC<cr>
 
 
 set tabstop=4
-set shifthwidth=4
+set shiftwidth=4
 set expandtab
 
