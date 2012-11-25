@@ -34,7 +34,7 @@ nmap <silent> ,ev :e $MYVIMRC<cr>
 nmap <silent> ,sv :so $MYVIMRC<cr>
 
 
-tabstop=4
-shifthwidth=4
-expandtab
+set tabstop=4
+set shifthwidth=4
+set expandtab
 
