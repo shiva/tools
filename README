@@ -1,2 +1,20 @@
 
 Scripts for *nix and mac environments
+
+nix-cfg/
+nix-cfg/bashrc_ext
+nix-cfg/jellybeans.vim
+nix-cfg/README
+nix-cfg/vimrc
+
+src/
+src/apt-build-dep-clean
+src/check-version
+src/lnall
+src/nwping
+
+
+Deploying vim files
+1. rename vimrc to .vimrc and move to home dir
+2. move jellybeans.vim to ~/.vim/colors/
+
