@@ -1,6 +1,0 @@
-# prompt should be colorless, odourless, and useful
-PS1='$ '
-
-# env vars
-export WORKON_HOME=~/Envs
-export EDITOR=vim
