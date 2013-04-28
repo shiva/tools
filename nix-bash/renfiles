@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# renames files in cwd and replaces spaces with Hyphens
+ 
+do
+  echo Converting "$file" to "${file// /-}"
+  mv "$file" "${file// /-}"
+done

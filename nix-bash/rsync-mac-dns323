@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# vars
+RSYNC_CMD="rsync --progress"
+
+# password-less ssh expected (setup keys)
+DNS323_HOST="10.0.1.110"
+DNS323_USER="root"
+
+SRC_MOVIES="/Users/shiva/Movies"
+DEST_MOVIES="/mnt/HD_a2/movies"
+
+SRC_PHOTOS="/Users/shiva/Pictures/photos"
+DEST_PHOTOS="/mnt/HD_a2/photos/raw"
+
+SRC_LIGHTROOM="/Users/shiva/Pictures/Lightroom"
+DEST_LIGHTROOM="/mnt/HD_a2/photos/Lightroom"
+
+# A pretend Python dictionary with bash 3 
+sync_dirs=( "${SRC_MOVIES}:${DEST_MOVIES}"
+            "${SRC_PHOTOS}:${DEST_PHOTOS}"
+            "${SRC_LIGHTROOM}:${DEST_LIGHTROOM}" )
+
+# Check ssh connection
+#echo "Testing ssh connection ..."
+#ssh -T ${DNS323_USER}@${DNS323_HOST} || die("Unable to connect to $DNS323_HOST via ssh")
+
+echo "Starting rsync ... "
+for d in "${sync_dirs[@]}" ; do
+    SRC=${d%%:*}
+    DEST=${d#*:}
+
+    printf "%s syncs to %s.\n" "$SRC" "$DEST"
+    $RSYNC_CMD -r ${SRC}/* ${DNS323_USER}@${DNS323_HOST}:${DEST}/ 
+done
+
+die() { 
+    echo "$@" 1>&2 ; exit 1; 
+}
