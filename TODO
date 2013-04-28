@@ -1,0 +1,4 @@
+
+1. add commonly used plugins to dotvim
+2. write a makefile or script to deploy all the files using symlinks 
+3. use pathogen, to manage vim plugins?

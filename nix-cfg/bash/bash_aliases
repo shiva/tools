@@ -1,0 +1,2 @@
+alias pydev='source /usr/local/bin/virtualenvwrapper.sh'
+
