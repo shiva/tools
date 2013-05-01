@@ -1,0 +1,26 @@
+#! /bin/bash
+
+
+# renames files in cwd and replaces spaces with Hyphens
+change_in()
+{
+    file=$1
+    o_char=$2
+    n_char=$3
+
+    echo Converting "$file" to "${file//$o_char/$n_char}"
+    mv "$file" "${file//$o_char/$n_char}"
+}
+ 
+for file in "$@"; do
+    if [[ -d "$file" ]]; then
+        change_in "$file" " " "-"
+    elif [[ -f $PASSED ]]; then
+        change_in "$file" " " "-"
+    else
+        echo "$file is not a file or dir. Skipping..."
+        continue
+    fi
+done
+
+
