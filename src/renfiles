@@ -1,6 +1,5 @@
 #! /bin/bash
 
-
 # renames files in cwd and replaces spaces with Hyphens
 change_in()
 {
@@ -15,7 +14,7 @@ change_in()
 for file in "$@"; do
     if [[ -d "$file" ]]; then
         change_in "$file" " " "-"
-    elif [[ -f $PASSED ]]; then
+    elif [[ -f $file ]]; then
         change_in "$file" " " "-"
     else
         echo "$file is not a file or dir. Skipping..."
