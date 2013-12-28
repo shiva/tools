@@ -1,8 +1,11 @@
 " Forget being compatible with good ol' vi
 set nocompatible
 
-set t_Co=256
-color jellybeans
+"set t_Co=256
+"color jellybeans
+
+set background=dark
+colorscheme solarized
 
 " Get that filetype stuff happening
 filetype on
@@ -10,7 +13,7 @@ filetype plugin on
 filetype indent on
 
 " Turn on that syntax highlighting
-syntax on
+syntax enable
 
 " Why is this not a default
 set hidden
@@ -25,18 +28,12 @@ set showmode
 " with +wildmenu.  See :help 'wildmenu'
 set wildmenu
 
-" Let's make it easy to edit this file (mnemonic for the key sequence is
-" 'e'dit 'v'imrc)
+" Let's make it easy to edit and source vimrc
 nmap <silent> ,ev :e $MYVIMRC<cr>
-
-" And to source this file as well (mnemonic for the key sequence is
-" 's'ource 'v'imrc)
 nmap <silent> ,sv :so $MYVIMRC<cr>
-
 
 set tabstop=4
 set shiftwidth=4
 set expandtab
-
 
 execute pathogen#infect()
