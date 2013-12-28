@@ -1,0 +1,11 @@
+# astyle 
+
+style=kr
+indent=spaces=4
+pad-oper
+unpad-paren
+pad-header
+align-pointer=name
+align-reference=name
+max-code-length=80
+break-after-logical
