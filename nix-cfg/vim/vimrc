@@ -36,4 +36,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" Set default undo locations"
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+
 execute pathogen#infect()
