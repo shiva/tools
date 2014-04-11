@@ -1,3 +1,6 @@
 [submodule "nix-cfg/vim/dotvim/bundle/vim-golang"]
 	path = nix-cfg/vim/dotvim/bundle/vim-golang
 	url = git@github.com:jnwhiteh/vim-golang.git
+[submodule "nix-cfg/vim/dotvim/bundle/gocode"]
+	path = nix-cfg/vim/dotvim/bundle/gocode
+	url = git@github.com:Blackrush/vim-gocode.git
