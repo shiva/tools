@@ -1,24 +1,29 @@
 #!/bin/bash
 
 # vars
-RSYNC_CMD="rsync --progress"
+RSYNC_CMD="rsync"
 
 # password-less ssh expected (setup keys)
 DNS323_HOST="10.0.1.110"
-DNS323_USER="root"
+DNS323_USER="bkpuser"
+PASSWD_FILE=~/.ssh/dns323_rsync_passwd
 
 SRC_MOVIES="/Users/shiva/Movies"
-DEST_MOVIES="/mnt/HD_a2/movies"
+DEST_MOVIES="movies"
 
-SRC_PHOTOS="/Users/shiva/Pictures/lr-photos"
-DEST_PHOTOS="/mnt/HD_a2/photos/raw"
+SRC_PHOTOS="/Volumes/M5-2/Pictures/lr-photos"
+DEST_PHOTOS="photos/raw"
+
+SRC_IPHONEPHOTOS="/Volumes/M5-2/Pictures/iphone"
+DEST_IPHONEPHOTOS="photos/iphone"
 
 SRC_LIGHTROOM="/Users/shiva/Pictures/Lightroom"
-DEST_LIGHTROOM="/mnt/HD_a2/photos/Lightroom"
+DEST_LIGHTROOM="photos/Lightroom"
 
 # A pretend Python dictionary with bash 3 
 sync_dirs=( "${SRC_MOVIES}:${DEST_MOVIES}"
             "${SRC_PHOTOS}:${DEST_PHOTOS}"
+            "${SRC_IPHONEPHOTOS}:${DEST_IPHONEPHOTOS}"
             "${SRC_LIGHTROOM}:${DEST_LIGHTROOM}" )
 
 # Check ssh connection
@@ -30,8 +35,10 @@ for d in "${sync_dirs[@]}" ; do
     SRC=${d%%:*}
     DEST=${d#*:}
 
-    printf "%s syncs to %s.\n" "$SRC" "$DEST"
-    $RSYNC_CMD -r ${SRC}/* ${DNS323_USER}@${DNS323_HOST}:${DEST}/ 
+    printf "%s syncs to mac-rsync/%s.\n" "$SRC" "$DEST"
+    
+    #printf "$RSYNC_CMD -r ${SRC}/* rsync://${DNS323_USER}@${DNS323_HOST}:873/mac-rsync/${DEST}/"
+    $RSYNC_CMD --password-file=${PASSWD_FILE} -avzhO --stats --no-perms ${SRC}/* rsync://${DNS323_USER}@${DNS323_HOST}:873/mac-rsync/${DEST}/ 
 done
 
 die() { 
