@@ -38,7 +38,7 @@ for d in "${sync_dirs[@]}" ; do
     printf "%s syncs to mac-rsync/%s.\n" "$SRC" "$DEST"
     
     #printf "$RSYNC_CMD -r ${SRC}/* rsync://${DNS323_USER}@${DNS323_HOST}:873/mac-rsync/${DEST}/"
-    $RSYNC_CMD --password-file=${PASSWD_FILE} -avzhO --stats --no-perms ${SRC}/* rsync://${DNS323_USER}@${DNS323_HOST}:873/mac-rsync/${DEST}/ 
+    $RSYNC_CMD --password-file=${PASSWD_FILE} -azhO --progress --stats --no-perms ${SRC}/* rsync://${DNS323_USER}@${DNS323_HOST}:873/mac-rsync/${DEST}/ 
 done
 
 die() { 
