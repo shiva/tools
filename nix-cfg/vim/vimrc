@@ -19,6 +19,9 @@ filetype indent on
 " Turn on that syntax highlighting
 syntax enable
 
+" Turn on omnicomplete
+set omnifunc=syntaxcomplete#Complete
+
 " Why is this not a default
 set hidden
 

@@ -10,3 +10,6 @@
 [submodule "nix-cfg/vim/dotvim/bundle/solarized"]
 	path = nix-cfg/vim/dotvim/bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "nix-cfg/vim/dotvim/bundle/delmitmate"]
+	path = nix-cfg/vim/dotvim/bundle/delmitmate
+	url = git://github.com/Raimondi/delimitMate.git
