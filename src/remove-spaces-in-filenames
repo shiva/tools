@@ -15,7 +15,7 @@ for file in "$@"; do
     if [[ -d "$file" ]]; then
         change_in "$file" " " ""
     elif [[ -f $file ]]; then
-        change_in "$file" " " ""
+        change_in "$file" " " "."
     else
         echo "$file is not a file or dir. Skipping..."
         continue
