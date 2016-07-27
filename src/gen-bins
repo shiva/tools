@@ -13,10 +13,6 @@ env GOPATH="`pwd`" go get -v github.com/spf13/hugo
 
 echo "Compiling for linux ..."
 env GOPATH="`pwd`" GOOS=linux GOARCH=amd64 go build -v github.com/spf13/hugo
-mv hugo ${DEPLOY}/x86_64/
-
-echo "Compiling for osx ..."
-env GOPATH="`pwd`" GOOS=darwin GOARCH=amd64 go build -v github.com/spf13/hugo
-mv hugo ${DEPLOY}/osx/
+mv ${STAGING}/hugo/bin/hugo ${DEPLOY}/x86_64/
 
 echo "Done."
