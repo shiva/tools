@@ -1,0 +1,22 @@
+#!/bin/bash 
+
+set -e
+CHECKOUT_DIR=`pwd`
+
+STAGING=${CHECKOUT_DIR}/staging
+DEPLOY=${CHECKOUT_DIR}/bin
+
+echo "Creating staging dir for hugo, and checkout source (${STAGING}/staging)..."
+mkdir -p ${STAGING}/hugo
+cd ${STAGING}/hugo
+env GOPATH="`pwd`" go get -v github.com/spf13/hugo
+
+echo "Compiling for linux ..."
+env GOPATH="`pwd`" GOOS=linux GOARCH=amd64 go build -v github.com/spf13/hugo
+mv hugo ${DEPLOY}/x86_64/
+
+echo "Compiling for osx ..."
+env GOPATH="`pwd`" GOOS=darwin GOARCH=amd64 go build -v github.com/spf13/hugo
+mv hugo ${DEPLOY}/osx/
+
+echo "Done."
