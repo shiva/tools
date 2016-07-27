@@ -1,3 +1,4 @@
 c-parser/grammar/output/
 *.pyc
 .net*
+staging/
