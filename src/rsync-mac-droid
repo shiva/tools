@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# vars
+RSYNC_CMD="rsync"
+
+# password-less ssh expected (setup keys)
+DROID_HOST="10.0.1.104"
+DROID_USER="root"
+DROID_PASSWORD_FILE="~/droid_password_file"
+REMOTE_SSH_PORT=2222
+REMOTE_RSYNC_PATH="/data/data/berserker.android.apps.sshdroid/dropbear/rsync"
+
+SRC_MOVIES="/Users/shiva/Movies"
+DEST_MOVIES="movies"
+
+SRC_MUSIC="/Volumes/M5-2/iTunes media/Music"
+DEST_MUSIC="/sdcard/Music"
+
+SRC_MUSIC_FLAC="/Volumes/M5-2/import/music/flac"
+DEST_MUSIC_FLAC="/sdcard/Music/flac"
+
+SRC_PHOTOS="/Volumes/M5-2/Pictures/lr-photos"
+DEST_PHOTOS="photos/raw"
+
+SRC_IPHONEPHOTOS="/Volumes/M5-2/Pictures/iphone"
+DEST_IPHONEPHOTOS="photos/iphone"
+
+SRC_LIGHTROOM="/Users/shiva/Pictures/Lightroom"
+DEST_LIGHTROOM="photos/Lightroom"
+
+# A pretend Python dictionary with bash 3 
+sync_dirs=( "${SRC_MUSIC}:${DEST_MUSIC}"
+            "${SRC_MUSIC_FLAC}:${DEST_MUSIC_FLAC}" )
+
+# Check ssh connection
+#echo "Testing ssh connection ..."
+#ssh -T ${DROID_USER}@${DROID_HOST} || die("Unable to connect to $DROID_HOST via ssh")
+
+echo "Starting rsync ... "
+for d in "${sync_dirs[@]}" ; do
+    SRC=${d%%:*}
+    DEST=${d#*:}
+
+    printf "%s syncs to %s.\n" "$SRC" "$DEST"
+    
+    # don't preserve ownership or set permissions (since it's only data)
+    $RSYNC_CMD \
+        --rsync-path=${REMOTE_RSYNC_PATH} \
+        --password-file=${PASSWD_FILE} \
+        --recursive --no-perms \
+        --verbose --stats \
+        --progress \
+        --ignore-times \
+        -e "ssh -p ${REMOTE_SSH_PORT}" \
+        "${SRC}" ${DROID_USER}@${DROID_HOST}:"${DEST}"/ 
+done
+
+die() { 
+    echo "$@" 1>&2 ; exit 1; 
+}
