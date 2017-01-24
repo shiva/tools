@@ -1,8 +1,33 @@
-" Forget being compatible with good ol' vi
-set nocompatible
 
-"set t_Co=256
-"color jellybeans
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme) 
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+
+Plugin 'Syntastic' "uber awesome syntax and errors highlighter
+Plugin 'altercation/vim-colors-solarized' "T-H-E colorscheme
+Plugin 'https://github.com/tpope/vim-fugitive'
+
+if iCanHazVundle == 0
+    echo "Installing Vundles, please ignore key map error messages"
+    echo ""
+    :PluginInstall
+endif
+
+call vundle#end() 
+
+filetype plugin indent on
 
 set background=dark
 let g:solarized_termtrans=1
@@ -10,43 +35,43 @@ let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
+syntax on
+
+" Forget being compatible with good ol' vi
+" set nocompatible
 
 " Get that filetype stuff happening
-filetype on
-filetype plugin on
-filetype indent on
+"filetype on
+"filetype plugin on
+"filetype indent on
 
 " Turn on that syntax highlighting
-syntax enable
+"syntax enable
 
 " Turn on omnicomplete
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 
 " Why is this not a default
-set hidden
+"set hidden
 
 " Don't update the display while executing macros
-set lazyredraw
+"set lazyredraw
 
 " At least let yourself know what mode you're in
-set showmode
+"set showmode
 
 " Enable enhanced command-line completion. Presumes you have compiled
 " with +wildmenu.  See :help 'wildmenu'
-set wildmenu
+"set wildmenu
 
 " Let's make it easy to edit and source vimrc
-nmap <silent> ,ev :e $MYVIMRC<cr>
-nmap <silent> ,sv :so $MYVIMRC<cr>
+"nmap <silent> ,ev :e $MYVIMRC<cr>
+"nmap <silent> ,sv :so $MYVIMRC<cr>
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
+"set tabstop=4
+"set shiftwidth=4
+"set expandtab
 
 " Set default undo locations"
-set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+"set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
-execute pathogen#infect()
