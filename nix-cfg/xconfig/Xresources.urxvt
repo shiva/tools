@@ -1,0 +1,147 @@
+
+
+! urxvt {{{2
+! =================================================
+URxvt*termName:                         screen-256color
+URxvt*geometry:                         240x84
+URxvt*loginShell:                       true
+URxvt*scrollColor:                      #777777
+
+! rxvt, plain, next or xterm. 
+URxvt*scrollstyle:                      rxvt
+URxvt*scrollTtyKeypress:                true
+URxvt*scrollTtyOutput:                  false
+URxvt*scrollWithBuffer:                 false
+URxvt*secondaryScreen:                  true
+URxvt*secondaryScroll:                  true
+
+! When receiving lots of lines, urxvt will only scroll once a whole screen height of lines has been read, resulting in fewer updates while still displaying every received line
+! False: specify that smooth scrolling should be used. urxvt will force a screen refresh on each new line it received
+! URxvt*jumpScroll:                     boolean
+
+URxvt*skipScroll:                       true
+URxvt*scrollBar:                        true
+URxvt*scrollBar_right:                  false
+URxvt*scrollBar_floating:               false
+! URxvt*scrollBar_align:                mode
+URxvt*thickness:                        10 
+
+! URxvt*transparent:                    boolean
+! URxvt*tintColor:                      color
+! Darken (0 .. 99) or lighten (101 .. 200) the transparent background.  A value of 100 means no shading
+! URxvt*shading:                          150
+! URxvt*blurRadius:                     HxV
+
+URxvt.intensityStyles: false
+
+URxvt*fading:                           30
+! URxvt*fadeColor:                        Green
+URxvt*utmpInhibit:                      false
+URxvt*urgentOnBell:                     false
+URxvt*visualBell:                       true
+URxvt*mapAlert:                         true
+URxvt*mouseWheelScrollPage:             false
+
+! URxvt*scrollColor:                    color
+! URxvt*troughColor:                    color
+! URxvt*highlightColor:                 color
+! URxvt*highlightTextColor:               White
+!URxvt*cursorUnderline:                  false
+!URxvt*cursorBlink:                      true
+!URxvt*cursorColor:                      Magenta
+!URxvt*cursorColor2:                     White
+!URxvt*pointerBlank:                     true
+!URxvt*pointerBlankDelay:                4
+!URxvt*pointerColor:                     green
+!URxvt*pointerColor2:                    blue
+! URxvt*iconName:                       string
+! URxvt*iconFile:                       file
+! URxvt*title:                          string
+
+
+!Xft.autohint: 0
+!Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+!Xft.hinting: 1
+!Xft.antialias: 1
+Xft.rgba: none
+
+! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for characters
+URxvt*font:      xft:hack:size=10
+!URxvt*font:        -*-terminus-medium-*-*-*-13-*-*-*-*-*-*-*
+!URxvt*boldFont:	   -*-terminus-bold-*-*-*-13-*-*-*-*-*-*-*
+
+!URxvt*font:       xft:Bitstream Vera Sans Mono:antialias=true:pixelsize=13
+!URxvt*italicFont: xft:Bitstream Vera Sans Mono:italic:autohint=true:antialias=true:pixelsize=13
+!URxvt*boldItalicFont:   xft:Bitstream Vera Sans Mono:bold:italic:autohint=true:antialias=true:pixelsize=13
+URxvt.letterSpace: -1
+
+
+
+URxvt*saveLines:                        0
+URxvt*buffered:                         true
+! URxvt*depth:                          number
+! URxvt*visual:                         number
+! URxvt*transient-for:                  windowid
+! URxvt*override-redirect:              boolean
+URxvt*hold:                             false
+! URxvt*externalBorder:                 number
+URxvt*internalBorder:
+! URxvt*borderColor:                    color
+! URxvt*borderLess:                     boolean
+! URxvt*lineSpace:                      number
+! URxvt*letterSpace:                    number
+! URxvt*skipBuiltinGlyphs:              boolean
+! URxvt*backspacekey:                   string
+! URxvt*deletekey:                      string
+
+URxvt*print-pipe:                       cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+! URxvt*modifier:                       modifier
+! URxvt*cutchars:                       string
+! URxvt*answerbackString:               string
+! URxvt*perl-lib:                       string
+! URxvt*perl-eval:                      perl-eval
+
+! Comma-separated list(s) of perl extension scripts (default: "default") to use in this terminal instance, blank disables
+URxvt*perl-ext-common: selection-to-clipboard
+URxvt*perl-ext:
+
+! URxvt*url-launcher:                   string
+! URxvt*inputMethod:                    name
+! URxvt*preeditType:                    style
+! URxvt*imLocale:                       string
+! URxvt*imFont:                         fontname
+! URxvt*chdir:                          string
+! URxvt*reverseVideo:                   boolean
+! URxvt*meta8:                          boolean
+! URxvt*pastableTabs:                   boolean
+! URxvt*iso14755:                       boolean
+! URxvt*iso14755_52:                    boolean
+
+! Sets the hotkey that starts the incremental scrollback buffer search (default: "M-s")
+! URxvt*searchable-scrollback:          string
+! URxvt*selection-pastebin.cmd:         string
+! URxvt*selection-pastebin.url:         string
+
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+
+
+! URxvt*xrm:                            string
+! URxvt*background.border:              boolean
+! URxvt*background.expr:                string
+! URxvt*background.interval:            seconds
+
+! URxvt*bell-command:                   string
+
+! URxvt*matcher.button:                 string
+! URxvt*matcher.launcher:               string
+! URxvt*matcher.launcher.*:             string
+! URxvt*matcher.pattern.*:              string
+! URxvt*matcher.rend.*:                 string
+
+! URxvt*remote-clipboard.fetch:         string
+! URxvt*remote-clipboard.store:         string
+
