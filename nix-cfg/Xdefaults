@@ -1,3 +1,5 @@
+# Refer to https://lukas.zapletalovi.com/2013/07/hidden-gems-of-xterm.html
+
 URxvt*transparent: false
 URxvt*shading: 35
 URxvt*saveLines: 12000
