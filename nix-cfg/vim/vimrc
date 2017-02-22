@@ -29,51 +29,116 @@ endif
 
 call vundle#end() 
 
-filetype plugin indent on
-
 set background=dark
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
-syntax on
 
-" Forget being compatible with good ol' vi
-" set nocompatible
-
-" Get that filetype stuff happening
-"filetype on
-"filetype plugin on
-"filetype indent on
-
-" Turn on that syntax highlighting
-"syntax enable
-
-" Turn on omnicomplete
-"set omnifunc=syntaxcomplete#Complete
-
-" Why is this not a default
-"set hidden
-
-" Don't update the display while executing macros
-"set lazyredraw
-
-" At least let yourself know what mode you're in
-"set showmode
-
-" Enable enhanced command-line completion. Presumes you have compiled
-" with +wildmenu.  See :help 'wildmenu'
-"set wildmenu
 
 " Let's make it easy to edit and source vimrc
 "nmap <silent> ,ev :e $MYVIMRC<cr>
 "nmap <silent> ,sv :so $MYVIMRC<cr>
 
-"set tabstop=4
-"set shiftwidth=4
-"set expandtab
-
 " Set default undo locations"
 "set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 
+
+" URL: http://vim.wikia.com/wiki/Example_vimrc
+" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
+" Description: A minimal, but feature rich, example .vimrc. If you are a
+"              newbie, basing your first .vimrc on this file is a good choice.
+"              If you're a more advanced user, building your own .vimrc based
+"              on this file is still a good idea.
+ 
+"------------------------------------------------------------
+" Features {{{1
+"
+" These options and commands enable some very useful features in Vim, that
+" no user should have to live without.
+ 
+" Set 'nocompatible' to ward off unexpected things that your distro might
+" have made, as well as sanely reset options when re-sourcing .vimrc
+
+set nocompatible
+filetype indent plugin on
+syntax on
+
+"------------------------------------------------------------
+"" Must have options {{{1
+"
+"" These are highly recommended options.
+
+set hidden
+" not everyone likes working with the hidden option
+" Alternatives include using tabs or split windows instead of re-using the same
+" window as mentioned above, and/or either of the following options:
+" set confirm
+" set autowriteall
+ 
+set showmode            " At least let yourself know what mode you're in
+set wildmenu            " Better command-line completion 
+set showcmd             " Show partial commands in the last line of the screen
+set hlsearch            " Highlight searches (use <C-L> to temporarily turn off highlighting; see the mapping of <C-L> below)
+ 
+" Modelines have historically been a source of security vulnerabilities. As
+" such, it may be a good idea to disable them and use the securemodelines
+" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
+" set nomodeline
+ 
+ 
+"------------------------------------------------------------
+" Usability options {{{1
+"
+" These are options that users frequently set in their .vimrc. Some of them
+" change Vim's behaviour in ways which deviate from the true Vi way, but
+" which are considered to add usability. Which, if any, of these options to
+" use is very much a personal preference, but they are harmless.
+ 
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+ 
+set backspace=indent,eol,start          " Allow backspacing over autoindent, line breaks and start of insert action
+set autoindent                          " Keep the same indent as the line you're currently on.
+set nostartofline                       " Stop certain movements from always going to the first character of a line.
+set ruler                               " Display the cursor position on the last line of the screen or in the status line of a window
+set laststatus=2                        " Always display the status line, even if only one window is displayed
+set confirm                             " raise dialogue asking if you wish to save changed files.
+set visualbell                          " Use visual bell instead of beeping when doing something wrong
+set t_vb=                               " Reset the terminal code for the visual bell. 
+set mouse=a                             " Enable use of the mouse for all modes
+ 
+" Set the command window height to 2 lines, to avoid many cases of having to
+" "press <Enter> to continue"
+set cmdheight=2
+set number                              " Display line numbers on the left
+set notimeout ttimeout ttimeoutlen=200  " Quickly time out on keycodes, but never time out on mappings
+set pastetoggle=<F11>                   " Use <F11> to toggle between 'paste' and 'nopaste'
+ 
+ 
+"------------------------------------------------------------
+" Indentation options {{{1
+"
+" Indentation settings according to personal preference.
+ 
+" Indentation settings for using 4 spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup so that
+" it shows the lines that are "tabs" instead of "spaces"
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+ 
+"------------------------------------------------------------
+" Mappings {{{1
+"
+" Useful mappings
+ 
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
+" which is the default
+map Y y$
+ 
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
