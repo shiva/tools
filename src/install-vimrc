@@ -1,8 +1,9 @@
 #!/bin/bash
 
-dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-
-echo $dir
+pushd `dirname $0` > /dev/null
+SCRIPTPATH=`pwd`
+popd > /dev/null
+GIT_REPO_BASE="$(dirname "$SCRIPTPATH")"
 
 dest_dotvim="~/.vim"
 if [ -d ${dest_dotvim} ]; then
@@ -11,11 +12,7 @@ if [ -d ${dest_dotvim} ]; then
   mv ${dest_dotvim} ~/dotvim.bkp
 fi
 
-echo "Making symlink for .vim"
-ln -s ${dir}/dotvim ~/.vim
-
 dest_vimrc="~/.vimrc"
-
 if [ -f ${dest_vimrc} ]; then
   # make a copy
   echo "Making a backup of existing .vimrc"
@@ -23,5 +20,5 @@ if [ -f ${dest_vimrc} ]; then
 fi
 
 echo "Making symlink for .vimrc"
-ln -s ${dir}/vimrc ~/.vimrc
+ln -s ${GIT_REPO_BASE}/nix-cfg/vimrc ~/.vimrc
 
