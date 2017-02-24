@@ -12,36 +12,17 @@ Scripts
 Deploying vim files
 ===
 
-If running on BASH or a compatible shell:
- - Run nix-cfg/vim/make-vim-symlinks.sh
+ - If running on BASH or a compatible shell, run
+ '''
+ $ nix-cfg/vim/make-vim-symlinks.sh
+ '''
+ 
+ - Otherwise, symlink or copy nix-cfg/vimrc to ~/.vimrc
 
-Otherwise
- - 
-
-nix-cfg/
-nix-cfg/bash
-nix-cfg/bash/bashrc
-nix-cfg/bash/bash_aliases
-
-nix-cfg/vim
-nix-cfg/vim/vimrc
-nix-cfg/vim/dotvim
-nix-cfg/vim/dotvim/colors
-nix-cfg/vim/dotvim/colors/jellybeans.vim
-
-nix-cfg/i3
-nix-cfg/i3/config
-
-src/
-src/check-version
-src/pydev
-src/nwping
-src/apt-build-dep-clean
-src/lnall
+When opening vim for the first time, it will create a ~/.vim directory, and setup vundle and other plugins.
 
 TODO
 ===
-
  - [X] add commonly used plugins to dotvim
  - [X] use pathogen, to manage vim plugins?
  - [ ] write a makefile or script to deploy all the files using symlinks 
