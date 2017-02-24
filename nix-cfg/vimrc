@@ -20,7 +20,7 @@ Plugin 'Syntastic' "uber awesome syntax and errors highlighter
 Plugin 'altercation/vim-colors-solarized' "T-H-E colorscheme
 Plugin 'https://github.com/tpope/vim-fugitive'
 Plugin 'ctrlpvim/ctrlp.vim'
-
+Plugin 'steffanc/cscopemaps.vim'
 
 if iCanHazVundle == 0
     echo "Installing Vundles, please ignore key map error messages"
