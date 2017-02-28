@@ -1,0 +1,29 @@
+#!/bin/bash 
+
+pushd `dirname $0` > /dev/null
+SCRIPTPATH=`pwd`
+popd > /dev/null
+GIT_REPO_BASE="$(dirname "$SCRIPTPATH")"
+
+bkp_if_exists () {
+    filename=$1
+    if [ -f $filename ]; then
+        echo "Making a backup of $filename ... "
+        mv $filename "$filename.bkp"
+    fi
+}
+
+make_sym_link () {
+    destfile=".${f##*/}" # get just the name of the file
+
+    bkp_if_exists $destfile
+
+    echo "Making symlink : ~/$destfile -> $f";
+    ln -s "$f" ~/$destfile
+}
+
+echo "Making symlinks ... "
+for f in `ls ${GIT_REPO_BASE}/nix-cfg/xconfig/*` ; do
+    make_sym_link $f
+done
+
