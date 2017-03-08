@@ -109,7 +109,7 @@ set laststatus=2                        " Always display the status line, even i
 set confirm                             " raise dialogue asking if you wish to save changed files.
 set visualbell                          " Use visual bell instead of beeping when doing something wrong
 set t_vb=                               " Reset the terminal code for the visual bell. 
-set mouse=a                             " Enable use of the mouse for all modes
+"set mouse=a                             " Enable use of the mouse for all modes
  
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
