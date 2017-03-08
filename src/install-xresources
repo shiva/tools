@@ -5,6 +5,9 @@ SCRIPTPATH=`pwd`
 popd > /dev/null
 GIT_REPO_BASE="$(dirname "$SCRIPTPATH")"
 
+# backup, if and only if
+#  - not a symlink
+#  - not a directory
 bkp_if_exists () {
     filename=$1
     if [ -f $filename ]; then
