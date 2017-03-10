@@ -1,5 +1,22 @@
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -l'
+alias la='ls -A'
+alias lla='ls -la'
+
+# dealing with code
 alias gen-cscope='find . -iname '\''*.c'\'' -o -iname '\''*.cpp'\'' -o -iname '\''*.cc'\'' -o -iname '\''*.h'\'' -o -iname '\''*.hpp'\'' > cscope.files && cscope -b -i cscope.files -f cscope.out'
 alias gen-tags='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q'
 alias remove-whitespace='sed -e '\''s/[[:blank:]]\+$//'\'' -i'
-alias remove-ws-in-last-commit= 'for f in `git show --name-only --pretty=""`; do echo $f; remove-whitespace $f; done'
+alias remove-ws-in-last-commit='for f in `git show --name-only --pretty=""`; do echo $f; remove-whitespace $f; done'
