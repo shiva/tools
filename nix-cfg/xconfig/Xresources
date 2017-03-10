@@ -1,3 +1,2 @@
 #include ".Xresources.solarized.dark"
-#include ".Xresources.urxvt"
 #include ".Xresources.misc"
