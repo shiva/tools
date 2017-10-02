@@ -18,10 +18,15 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'Syntastic' "uber awesome syntax and errors highlighter
 Plugin 'altercation/vim-colors-solarized' "T-H-E colorscheme
-Plugin 'https://github.com/tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'steffanc/cscopemaps.vim'
 Plugin 'nathanalderson/yang.vim'
+Plugin 'ajh17/VimCompletesMe.git'
+Plugin 'hari-rangarajan/CCTree'
 
 if iCanHazVundle == 0
     echo "Installing Vundles, please ignore key map error messages"

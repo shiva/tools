@@ -1,23 +1,24 @@
 #!/bin/bash
 
+mk_backup()
+{
+    filename=$1
+    if [ -e $filename ] ; then
+        # make a copy
+        echo "Making a backup of existing ${filename}"
+        mv "${filename}" "${filename}.bkp"
+    fi
+
+    return 0
+}
+
 pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd`
 popd > /dev/null
 GIT_REPO_BASE="$(dirname "$SCRIPTPATH")"
 
-dest_dotvim="~/.vim"
-if [ -d ${dest_dotvim} ]; then
-  # make a copy 
-  echo "Making a backup of existing .vim"
-  mv ${dest_dotvim} ~/dotvim.bkp
-fi
-
-dest_vimrc="~/.vimrc"
-if [ -f ${dest_vimrc} ]; then
-  # make a copy
-  echo "Making a backup of existing .vimrc"
-  mv ${dest_vimrc} ~/vimrc.bkp
-fi
+mk_backup ~/.vim
+mk_backup ~/.vimrc
 
 echo "Making symlink for .vimrc"
 ln -s ${GIT_REPO_BASE}/nix-cfg/vimrc ~/.vimrc
