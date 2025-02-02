@@ -1,0 +1,24 @@
+#!/bin/bash
+
+mk_backup()
+{
+    filename=$1
+    if [ -e $filename ] ; then
+        # make a copy
+        echo "Making a backup of existing ${filename}"
+        mv "${filename}" "${filename}.bkp"
+    fi
+
+    return 0
+}
+
+pushd `dirname $0` > /dev/null
+SCRIPTPATH=`pwd`
+popd > /dev/null
+GIT_REPO_BASE="$(dirname "$SCRIPTPATH")"
+
+mk_backup ~/.gitconfig
+
+echo "Making symlink for .gitconfig"
+ln -s ${GIT_REPO_BASE}/nix-cfg/gitconfig ~/.gitconfig
+

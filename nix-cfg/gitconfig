@@ -1,0 +1,19 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Shiva
+	email = shiv@shiv.me
+
+[alias]
+        lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --no-merges
+        st = status
+        c  = commit
+        b  = branch
+        co = checkout
+        d  = diff
+        s  = show --pretty="format:" --name-only
+        rms = "!f(){ git rm --cached \"$1\";rm -r \"$1\";git config -f .gitmodules --remove-section \"submodule.$1\";git config -f .git/config --remove-section \"submodule.$1\";git add .gitmodules; }; f"
+        ghp = "!g() { git config user.name \"Shiva\"; git config user.email \"shiv@shiv.me\"; }; g"
+        la = "!git config -l | grep alias | cut -c 7-"
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/

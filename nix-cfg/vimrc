@@ -25,7 +25,6 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'steffanc/cscopemaps.vim'
 Plugin 'nathanalderson/yang.vim'
-Plugin 'ajh17/VimCompletesMe.git'
 Plugin 'hari-rangarajan/CCTree'
 
 if iCanHazVundle == 0
