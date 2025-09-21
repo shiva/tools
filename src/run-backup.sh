@@ -69,6 +69,7 @@ case $phone in
         backup_phone "1p1" "${bdir}/oneplusone" "${POSITIONAL[@]}"
         backup_phone "1p2" "${bdir}/oneplustwo" "${POSITIONAL[@]}"
         backup_phone "1p5" "${bdir}/oneplusfive" "${POSITIONAL[@]}"
+        backup_phone "christina-phone" "${bdir}/christina-phone" "${POSITIONAL[@]}"
         ;;
     1p1)
         backup_phone "1p1" "${bdir}/oneplusone" "${POSITIONAL[@]}"
@@ -78,6 +79,9 @@ case $phone in
         ;;
     1p5)
         backup_phone "1p5" "${bdir}/oneplusfive" "${POSITIONAL[@]}"
+        ;;
+    christina-phone)
+        backup_phone "1p5" "${bdir}/christina-phone" "${POSITIONAL[@]}"
         ;;
 esac
 
