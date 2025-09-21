@@ -3,7 +3,7 @@
 " Instructions from http://erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme) 
+if !filereadable(vundle_readme)
     echo "Installing Vundle.."
     echo ""
     silent !mkdir -p ~/.vim/bundle
@@ -27,13 +27,19 @@ Plugin 'steffanc/cscopemaps.vim'
 Plugin 'nathanalderson/yang.vim'
 Plugin 'hari-rangarajan/CCTree'
 
+" Javascript - It's craziness!!
+Plugin 'posva/vim-vue'
+Plugin 'ap/vim-css-color'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'w0rp/ale'
+
 if iCanHazVundle == 0
     echo "Installing Vundles, please ignore key map error messages"
     echo ""
     :PluginInstall
 endif
 
-call vundle#end() 
+call vundle#end()
 
 set background=dark
 let g:solarized_termtrans=1
@@ -136,6 +142,17 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
  
+" for html files, 2 spaces
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+
+" for Makefile, 4 spaces but leave as tabs
+autocmd FileType make set noexpandtab ts=4 sw=4 sts=0
+
+" for js/coffee/jade files, 2 spaces
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
+autocmd Filetype coffeescript setlocal ts=2 sw=2 sts=0 expandtab
+autocmd Filetype jade setlocal ts=2 sw=2 sts=0 expandtab
+
 "------------------------------------------------------------
 " Mappings {{{1
 "
@@ -148,3 +165,7 @@ map Y y$
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
